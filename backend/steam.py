@@ -28,12 +28,12 @@ async def fetch_game_info(app_id: int) -> dict | None:
         }
 
 
-async def fetch_all_reviews(app_id: int, language: str = "english") -> list[dict]:
-    """Page through Steam's review cursor until we hit MAX_REVIEWS or the end."""
+async def fetch_all_reviews(app_id: int, language: str = "english", limit: int = MAX_REVIEWS) -> list[dict]:
+    """Page through Steam's review cursor until we hit limit or the end."""
     reviews = []
     cursor  = "*"
     async with httpx.AsyncClient(timeout=15) as client:
-        while len(reviews) < MAX_REVIEWS:
+        while len(reviews) < limit:
             params = {
                 "json":         1,
                 "language":     language,
