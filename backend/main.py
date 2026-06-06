@@ -84,14 +84,15 @@ async def analyze_game(app_id: int, language: str = "english", license_key: str 
     is_pro = await validate_ls_license(license_key)
     limit  = PRO_REVIEW_LIMIT if is_pro else FREE_REVIEW_LIMIT
 
-    raw = await fetch_all_reviews(app_id, language=language, limit=limit)
+    raw, total_in_db = await fetch_all_reviews(app_id, language=language, limit=limit)
     if not raw:
         raise HTTPException(status_code=422, detail="No reviews found for this game")
 
     result = analyze(raw)
     result["is_pro"]      = is_pro
-    result["limit_hit"]   = not is_pro and len(raw) >= FREE_REVIEW_LIMIT
+    result["limit_hit"]   = not is_pro and total_in_db > FREE_REVIEW_LIMIT
     result["review_cap"]  = PRO_REVIEW_LIMIT if is_pro else FREE_REVIEW_LIMIT
+    result["total_in_db"] = total_in_db
     return {"game": info, **result}
 
 

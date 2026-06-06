@@ -28,10 +28,12 @@ async def fetch_game_info(app_id: int) -> dict | None:
         }
 
 
-async def fetch_all_reviews(app_id: int, language: str = "english", limit: int = MAX_REVIEWS) -> list[dict]:
-    """Page through Steam's review cursor until we hit limit or the end."""
-    reviews = []
-    cursor  = "*"
+async def fetch_all_reviews(app_id: int, language: str = "english", limit: int = MAX_REVIEWS) -> tuple[list[dict], int]:
+    """Page through Steam's review cursor until we hit limit or the end.
+    Returns (reviews, total_in_db) where total_in_db is Steam's full count."""
+    reviews    = []
+    cursor     = "*"
+    total_in_db = 0
     async with httpx.AsyncClient(timeout=15) as client:
         while len(reviews) < limit:
             params = {
@@ -40,7 +42,7 @@ async def fetch_all_reviews(app_id: int, language: str = "english", limit: int =
                 "filter":       "recent",
                 "review_type":  "all",
                 "purchase_type":"steam",
-                "num_per_page": 100,
+                "num_per_page": min(100, limit - len(reviews)),
                 "cursor":       cursor,
             }
             r = await client.get(REVIEWS_URL.format(app_id=app_id), params=params)
@@ -49,6 +51,9 @@ async def fetch_all_reviews(app_id: int, language: str = "english", limit: int =
 
             if body.get("success") != 1:
                 break
+
+            if not total_in_db:
+                total_in_db = body.get("query_summary", {}).get("total_reviews", 0)
 
             batch = body.get("reviews", [])
             if not batch:
@@ -61,4 +66,4 @@ async def fetch_all_reviews(app_id: int, language: str = "english", limit: int =
 
             await asyncio.sleep(0.3)   # polite pacing
 
-    return reviews
+    return reviews[:limit], total_in_db

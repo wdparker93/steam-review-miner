@@ -239,7 +239,7 @@ export default function App() {
                 {/* Upgrade banner */}
                 {data.limit_hit && (
                   <UpgradeBanner
-                    totalInDb={data.game?.total_reviews}
+                    totalInDb={data.total_in_db}
                     onActivate={() => setShowKey(true)}
                   />
                 )}
