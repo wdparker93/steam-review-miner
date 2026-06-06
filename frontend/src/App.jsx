@@ -11,8 +11,9 @@ import ReviewList           from './components/ReviewList.jsx'
 import ExportButton         from './components/ExportButton.jsx'
 import Dashboard            from './components/Dashboard.jsx'
 
-const LS_MONTHLY_URL = import.meta.env.VITE_LS_MONTHLY_URL ?? '#'
-const LS_ANNUAL_URL  = import.meta.env.VITE_LS_ANNUAL_URL  ?? '#'
+const LS_CHECKOUT_URL = 'https://app.lemonsqueezy.com/share/1121206'
+const LS_MONTHLY_URL = import.meta.env.VITE_LS_MONTHLY_URL ?? LS_CHECKOUT_URL
+const LS_ANNUAL_URL  = import.meta.env.VITE_LS_ANNUAL_URL  ?? LS_CHECKOUT_URL
 
 // ── License key input (inline header widget) ──────────────────────────────────
 function LicenseWidget({ isPro, licenseKey, checking, error, onSubmit, onClear }) {

@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/api/:path*", "destination": "https://your-railway-app.railway.app/api/:path*" }
+    { "source": "/api/:path*", "destination": "https://steam-review-miner-production.up.railway.app/api/:path*" }
   ]
 }
