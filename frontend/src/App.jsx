@@ -11,7 +11,7 @@ import ReviewList           from './components/ReviewList.jsx'
 import ExportButton         from './components/ExportButton.jsx'
 import Dashboard            from './components/Dashboard.jsx'
 
-const LS_CHECKOUT_URL = 'https://app.lemonsqueezy.com/share/1121206'
+const LS_CHECKOUT_URL = 'https://catniplabs.lemonsqueezy.com/checkout/buy/a5a1f93b-cd6e-4ecb-bc0f-bfcbce8ee085'
 const LS_MONTHLY_URL = import.meta.env.VITE_LS_MONTHLY_URL ?? LS_CHECKOUT_URL
 const LS_ANNUAL_URL  = import.meta.env.VITE_LS_ANNUAL_URL  ?? LS_CHECKOUT_URL
 
