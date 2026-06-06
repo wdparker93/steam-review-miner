@@ -32,13 +32,13 @@ export default function Dashboard({ savedGames, isPro, isFull, onOpen, onRemove,
             {lsMonthlyUrl && (
               <a href={lsMonthlyUrl} target="_blank" rel="noopener noreferrer"
                 className="rounded-lg bg-yellow-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-yellow-500 transition-colors">
-                $14/month
+                $4.99/month
               </a>
             )}
             {lsAnnualUrl && (
               <a href={lsAnnualUrl} target="_blank" rel="noopener noreferrer"
                 className="rounded-lg border border-yellow-600 px-3 py-1.5 text-xs font-medium text-yellow-300 hover:bg-yellow-900/40 transition-colors">
-                $99/year — best value
+                $49.99/year — best value
               </a>
             )}
           </div>

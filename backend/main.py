@@ -11,7 +11,7 @@ from analyzer import analyze
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
-FREE_REVIEW_LIMIT = 30
+FREE_REVIEW_LIMIT = 100
 PRO_REVIEW_LIMIT  = 2000
 
 LS_API_KEY = os.getenv("LEMONSQUEEZY_API_KEY", "")

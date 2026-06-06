@@ -75,17 +75,17 @@ function UpgradeBanner({ totalInDb, onActivate }) {
   return (
     <div className="rounded-xl border border-yellow-700/40 bg-yellow-900/10 px-4 py-3 flex flex-wrap items-center justify-between gap-3">
       <p className="text-sm text-yellow-300">
-        Showing <strong>30 of {totalInDb?.toLocaleString() ?? '?'}</strong> reviews.
+        Showing <strong>100 of {totalInDb?.toLocaleString() ?? '?'}</strong> reviews.
         Upgrade to Pro to analyze up to 2,000.
       </p>
       <div className="flex gap-2">
         <a href={LS_MONTHLY_URL} target="_blank" rel="noopener noreferrer"
           className="rounded-lg bg-yellow-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-yellow-500 transition-colors">
-          $14/month
+          $4.99/month
         </a>
         <a href={LS_ANNUAL_URL} target="_blank" rel="noopener noreferrer"
           className="rounded-lg border border-yellow-600 px-3 py-1.5 text-xs font-medium text-yellow-300 hover:bg-yellow-900/40 transition-colors">
-          $99/year
+          $49.99/year
         </a>
         <button onClick={onActivate}
           className="rounded-lg border border-surface-600 px-3 py-1.5 text-xs text-gray-400 hover:border-gray-400 transition-colors">
@@ -215,7 +215,7 @@ export default function App() {
                 <div className="animate-spin text-3xl">⟳</div>
                 <p className="text-sm">Fetching reviews from Steam…</p>
                 <p className="text-xs text-gray-600">
-                  {isPro ? 'Up to 2,000 reviews — may take 30–60s' : '30 reviews — should be quick'}
+                  {isPro ? 'Up to 2,000 reviews — may take 30–60s' : '100 reviews — should be quick'}
                 </p>
               </div>
             )}
